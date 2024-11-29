@@ -1,16 +1,14 @@
 import { Routes } from '@angular/router';
-import { CategoryPage, categoryPageResolver } from '@pages/category';
-import { HomePage, topNewsResolver } from '@pages/home';
+import { categoryPageResolver } from '@pages/category';
+import { topNewsResolver } from '@pages/home';
 import { searchNews } from '@pages/search';
 import { ErrorPage } from '@pages/error';
-import { SearchPage } from '@pages/search';
 import { NewsAPIResolverService } from 'service/news.api.service';
-import { AboutPage } from '@pages/about';
 
 export const routes: Routes = [
   {
     path: '',
-    component: HomePage,
+    loadComponent: () => import('@pages/home').then((page) => page.HomePage),
     title: 'Home',
     providers: [NewsAPIResolverService],
     resolve: {
@@ -19,19 +17,20 @@ export const routes: Routes = [
   },
   {
     path: 'category/:cat',
-    component: CategoryPage,
+    loadComponent: () =>
+      import('@pages/category').then((page) => page.CategoryPage),
     providers: [NewsAPIResolverService],
     title: 'Category',
-
     resolve: {
       categoryData: categoryPageResolver,
     },
   },
   {
     path: 'search',
-    component: SearchPage,
+    loadComponent: () =>
+      import('@pages/search').then((page) => page.SearchPage),
     providers: [NewsAPIResolverService],
-    title: 'Category',
+    title: 'Search',
 
     resolve: {
       news: searchNews,
@@ -39,7 +38,7 @@ export const routes: Routes = [
   },
   {
     path: 'about',
-    component: AboutPage,
+    loadComponent: () => import('@pages/about').then((page) => page.AboutPage),
   },
   {
     path: '**',
