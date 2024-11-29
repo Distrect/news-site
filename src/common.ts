@@ -1,4 +1,4 @@
-const API_KEY_1: Readonly<string> = 'a8ac6d22e24a4253800d4a8615428a04';
+const API_KEY_1: Readonly<string> = '6e33a04fa73746f0828a75cdc3f2430a';
 
 export abstract class NewsAPISertvice {
   protected readonly baseURL: string = `https://newsapi.org/v2`;
