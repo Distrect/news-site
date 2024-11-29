@@ -1,0 +1,24 @@
+@import "variable";
+
+button {
+  appearance: none;
+  outline: transparent;
+  border: none;
+  font-size: $base-font-size;
+  border-radius: 5px;
+  padding: 0.5ch 1ch;
+  background-color: $orange;
+  color: $white;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  button:hover {
+    background-color: lighten($orange, $amount: 10);
+  }
+
+  button:active {
+    background-color: lighten($orange, $amount: 15);
+  }
+}

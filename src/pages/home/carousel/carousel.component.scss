@@ -1,0 +1,103 @@
+@import "variable";
+
+:host {
+  position: relative;
+}
+
+.caret-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.caret-icon {
+  cursor: pointer;
+  width: 2rem;
+}
+
+.caret-left {
+  left: 0;
+  transform: rotate(90deg);
+}
+
+.caret-right {
+  right: 0;
+  transform: rotate(-90deg);
+}
+
+.slide {
+  background-color: $light;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  overflow: hidden;
+
+  &.hide {
+    display: none;
+  }
+
+  & > .slide-img {
+    width: 100%;
+
+    & > img {
+      width: 100%;
+      height: 14rem;
+      object-fit: cover;
+    }
+  }
+
+  & > .slide-body {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+
+    & > .body-header {
+      font-size: $text-md;
+      margin-bottom: 1ch;
+      font-weight: 500;
+      color: $dark;
+    }
+
+    & > .body-description {
+      font-size: $base-font-size;
+      color: $gray;
+    }
+
+    & > .body-date {
+      font-size: $text-sm;
+      color: $gray;
+      margin-top: auto;
+      margin-left: auto;
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-sm) {
+  .slide {
+    display: block;
+  }
+  .slide > .slide-img > img {
+    height: 20rem;
+  }
+}
+
+@media screen and (min-width: $breakpoint-lg) {
+  .slide {
+    display: flex;
+    flex-direction: row;
+
+    & > .slide-img {
+      flex: 0 0 40%;
+    }
+
+    & > .slide-body {
+      flex: 0 0 60%;
+
+      & > img {
+        height: 20rem;
+      }
+    }
+  }
+}

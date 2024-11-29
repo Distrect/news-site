@@ -1,0 +1,55 @@
+<div class="filter-container">
+  <div class="filter-header" (click)="setFilterVisibility()">
+    <p class="filter-text">Filters</p>
+    <img src="assets/caret-icon.svg" class="filter-caret" alt="" />
+  </div>
+  <form class="filters" [class.show]="isFilterVisible" [formGroup]="filterForm">
+    <div class="form-field">
+      <label class="form-label" for="filter-search-news">Search News</label>
+      <input
+        class="form-input"
+        type="text"
+        id="filter-search-news"
+        formControlName="query"
+        placeholder="Search News"
+      />
+    </div>
+    <div class="form-field">
+      <label class="form-label" for="filter-category"> Category </label>
+      <select
+        class="form-input"
+        name="category"
+        id="filter-category"
+        formControlName="category"
+      >
+        <option value="">Select Category</option>
+        @for (item of categories; track $index) {
+        <option [value]="item.toLocaleLowerCase('en')">
+          {{ item }}
+        </option>
+        }
+      </select>
+    </div>
+    <button class="filter-btn" (click)="filterNews($event)">Filter</button>
+  </form>
+</div>
+<!-- <div class="category-header">
+  <h4>
+    {{ currentFilters.category }}
+  </h4>
+</div> -->
+<div class="news-container">
+  @if(isLoading){
+  <loader></loader>
+  }@else { @for (item of news; track $index) {
+  <news-card [article]="item"></news-card>
+
+  } }
+</div>
+<pagination
+  class="pagination"
+  [class.hide]="isLoading"
+  [totalCount]="totalCount"
+  (onPageNumchange)="changePage($event)"
+  [pageSize]="resultCount"
+></pagination>

@@ -1,0 +1,38 @@
+@import "variable";
+
+input,
+select {
+  appearance: none;
+  outline: transparent;
+  padding: 1ch 1.25ch;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+input {
+  font-size: $text-sm;
+}
+
+select {
+  font-size: $text-sm;
+  color: $gray;
+}
+
+option {
+  font-size: $base-font-size;
+}
+
+select option {
+  font-size: $text-sm;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5ch;
+
+  & > .form-label {
+    font-size: $text-sm;
+    color: $dark;
+  }
+}

@@ -1,0 +1,58 @@
+<div id="header">
+  <div class="wrapper">
+    <a routerLink="" class="brand-name">Samet Sarıçiçek</a>
+    <img
+      src="assets/hamburger-icon.svg"
+      alt=""
+      id="sidebar-btn"
+      (click)="openSideBar()"
+    />
+    <div class="search-box">
+      <input
+        type="text"
+        id="news-search"
+        placeholder="Search"
+        [formControl]="search"
+      />
+      <button id="search-btn" (click)="searchNews()">
+        <img src="assets/search-icon.svg" alt="" />
+      </button>
+    </div>
+  </div>
+  <nav id="nav" [class.show]="isOpen">
+    <img
+      src="assets/close-icon.svg"
+      alt=""
+      id="nav-close-btn"
+      (click)="closeSideBar()"
+    />
+    <div class="nav-list">
+      <a
+        routerLink="/"
+        class="nav-item"
+        [class.active]="currentActive === 'Home'"
+        (click)="clickItem('Home')"
+      >
+        Home
+      </a>
+      @for (item of categories; track $index) {
+      <a
+        [routerLink]="['/category', item.toLocaleLowerCase('en')]"
+        class="nav-item"
+        [class.active]="currentActive === item"
+        (click)="clickItem(item)"
+      >
+        {{ item }}
+      </a>
+      }
+      <a
+        routerLink="/about"
+        class="nav-item"
+        [class.active]="currentActive === 'About'"
+        (click)="clickItem('About')"
+      >
+        About
+      </a>
+    </div>
+  </nav>
+</div>

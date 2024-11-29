@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+@import "variable";
+@import "input";
+@import "button";
+
+:root {
+  font-size: $base-font-size;
+  font-family: $font-family-sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+body {
+  background-color: $white;
+}
+
+a {
+  text-decoration: none;
+}

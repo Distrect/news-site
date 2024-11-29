@@ -1,0 +1,31 @@
+@if (slides !== null) { @for (item of slides; track $index) {
+<div
+  class="slide"
+  [class.show]="$index === activeIndex"
+  [class.hide]="$index !== activeIndex"
+>
+  <div class="slide-img">
+    <img [src]="item.urlToImage" alt="" />
+  </div>
+  <div class="slide-body">
+    <h4 class="body-header">
+      {{ item.title }}
+    </h4>
+    <p class="body-description">
+      {{ item.description }}
+    </p>
+    <span class="body-date">
+      {{ convertDate(item.publishedAt) }}
+    </span>
+  </div>
+</div>
+}
+<div class="caret-container">
+  <div class="prev-slide-btn" (click)="setPrevSlide()">
+    <img src="assets/caret-icon.svg" alt="" class="caret-icon caret-left" />
+  </div>
+  <div class="next-slide-btn" (click)="setNextSlide()">
+    <img src="assets/caret-icon.svg" alt="" class="caret-icon caret-right" />
+  </div>
+</div>
+}

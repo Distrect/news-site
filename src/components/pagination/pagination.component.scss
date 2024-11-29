@@ -1,0 +1,44 @@
+@import "variable";
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5ch;
+
+  & > .pagination-item {
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: red;
+
+    cursor: pointer;
+
+    padding: 1.5ch;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: $text-md;
+
+    transition: background-color 0.2s, color 0.2s;
+
+    color: $white;
+    background-color: $dark;
+    border: 1px solid $dark;
+
+    &.active {
+      background-color: $light;
+      color: $dark;
+    }
+  }
+}
+
+@media (hover: hover) {
+  .pagination-item:hover {
+    background-color: $light;
+    color: $dark;
+  }
+}

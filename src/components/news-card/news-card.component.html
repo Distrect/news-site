@@ -1,0 +1,20 @@
+<div class="card-img">
+  <img [src]="article.urlToImage" alt="" />
+</div>
+<div class="card-body">
+  <h4 class="card-title">
+    {{ article.title | titlePipe }}
+  </h4>
+
+  <p class="author">
+    @if (article.source.id) {
+    <span class="author-id">
+      {{ article.source.id }}
+    </span>
+    in }
+    <span class="author-name">
+      {{ article.source.name }}
+    </span>
+  </p>
+  <span class="article-date"></span>
+</div>

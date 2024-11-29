@@ -1,0 +1,26 @@
+<div class="page-header">
+  <p>
+    Showing results of:
+    <span class="query-text">
+      {{ currentQuery }}
+    </span>
+  </p>
+</div>
+<div class="news-container">
+  @if(isLoading){
+  <loader></loader>
+  }@else { @if(articles.length === 0){
+  <div class="empty-container">
+    <span>No news</span>
+  </div>
+  }@else{ @for (item of articles; track $index) {
+  <news-card [article]="item"></news-card>
+
+  } }}
+</div>
+<pagination
+  class="pagination"
+  [totalCount]="totalResults"
+  [pageSize]="20"
+  (onPageNumchange)="changePage($event)"
+></pagination>

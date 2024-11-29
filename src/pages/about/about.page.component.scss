@@ -1,0 +1,24 @@
+@import "variable";
+
+:host {
+  display: grid;
+  grid-column: 1/-1;
+
+  grid-template-columns: subgrid;
+}
+
+div {
+  grid-column: 1/-1;
+}
+
+@media screen and (min-width: $breakpoint-sm) {
+  div {
+    grid-column: 2/9;
+  }
+}
+
+@media screen and (min-width: $breakpoint-lg) {
+  div {
+    grid-column: 3/13;
+  }
+}

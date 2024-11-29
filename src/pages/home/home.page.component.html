@@ -1,0 +1,22 @@
+<carousel
+  class="carousel"
+  [slides]="pageArticles[currentPage].slice(0, 3)"
+></carousel>
+
+<div class="latest-news-container">
+  <div class="news-header">
+    <h3>Latest News</h3>
+  </div>
+  <div class="news-container">
+    @if(isLoading){
+    <loader></loader>
+    } @else{@for (item of pageArticles[currentPage].slice(3); track $index) {
+    <news-card [article]="item"></news-card> }}
+  </div>
+</div>
+<pagination
+  class="pagination"
+  [totalCount]="totalresults"
+  [pageSize]="20"
+  (onPageNumchange)="setPage($event)"
+></pagination>
